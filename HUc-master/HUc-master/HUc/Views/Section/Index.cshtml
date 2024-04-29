@@ -1,201 +1,303 @@
-﻿<style>
-    .modal-body form {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 0;
-    }
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<HUc.Data.DepartmentsDepartment>
 
-    .modal-body form .imgholder {
-      width: 200px;
-      height: 200px;
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
+<style>
+    .form-control, .form-check-input {
+        height: 45px;
     }
 </style>
-
-<div id="personal-info" class="shadow my-5">
-    <span class="bg-color">  معلومات الطلاب </span>
-    <p>تعرض هذه الصفحة قائمة بجميع الاقسام في النظام. يمكنك الاطلاع على معلومات كل قسم بما في ذلك اسم القسم, رقم القسم ومبلغ القسم .    </p>
-  </div>
-  </fieldset>
-  <div class="container-fluid col-12 bg-white-subtle shadow p-3 mb-5 bg-body-white rounded" style="width: 97%;">
-
-    <div class="col-12 row d-flex justify-content-between m-3">
-      <div class="col-4">
-        <h4 class="m-0">جدول الاقسام</h4>
-      </div>
-
-      <div class="col-4 d-flex justify-content-evenly" style="width: 180px;height:50px; margin-left:20%;">
-        <button class="dep btn rounded-pill" data-bs-toggle="modal" data-bs-target="#AddDept" type="button"
-          aria-label="اضافة قسم">
-          <span class="text-white">اضافة قسم<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-              fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-              <path fill-rule="evenodd"
-                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
-            </svg> </span>
-        </button>
-      </div>
-      <div class="col-4 " style="width: 180px; height: 65px;">
-        <select class="form-select" style="padding:20px 30px ;height: 60px;" aria-label="Default select example">
-          <option selected disabled>السنة الدراسية</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
+<div class="container-fluid">
+    <div class="pt-3">
+        <div id="personal-info" class="shadow">
+            <span class="bg-color">معلومات الاقسام</span>
+            <div class="row">
+                <span>
+                    تعرض هذه الصفحة قائمة بجميع الاقسام في النظام. يمكنك الاطلاع على معلومات كل قسم بما في ذلك اسم القسم, رقم القسم
+                </span>
+            </div>
+        </div>
     </div>
-    <div class="container-fluid " style="overflow-x:scroll;">
-      <table class="table " style="width: 100%; ">
-        <thead>
-          <tr>
 
-            <th style="width: 6%">#</th>
-            <th style="width: 6%">الاسم</th>
-            <th style="width: 6%">تفاصيل الاسم</th>
-            <th style="width: 6%">المبلغ الاجمالي</th>
-            <th>السنة الاكاديمية</th>
-            <th style="width: 6%">الرقم</th>
-            <th style="width: 6%">الكود</th>
-            <th style="width: 6%">تاريخ الاضافة</th>
-            <th style="width: 10%">العمليات</th>
+    <div class="container-fluid col-12 bg-white-subtle shadow p-3 mb-5 bg-body-white rounded" style="width: 97%;">
+        <div class="col-12 row d-flex justify-content-between m-3">
+            <div class="col-4">
+                <h4 class="m-0">جدول الاقسام</h4>
+            </div>
 
-
-          </tr>
-        </thead>
-        <tbody id="data">
-          <tr>
-            <td><!---->NaN</td>
-            <td><!---->قسم الطب</td>
-            <td><!---->تجربة من الباك ايند</td>
-            <td><!---->0</td>
-            <td><!---->{
-              { "year": "2024-2022", "id": "fe9a4141-f835-470d-8ccc-e007611fed28", "insertDate":
-              "2023-12-11T13:37:49.9789248", "upDateDate": "2023-12-11T13:48:55.9218347", "isDeleted": false,
-              "insertBy": "f571ac22-48e4-4a42-b137-d02ba6da3d1c", "insertByUser": null, "upDateBy":
-              "f571ac22-48e4-4a42-b137-d02ba6da3d1c", "upDateByUser": null }
-            </td>
-            <td>22</td>
-            <td>
-              <IDO< /td>
-            <td>2023-12-11</td>
-            <td> <button class="btnEdit btn btn-primary text-primary bg-transparent border-0  m-0 p-3" data-bs-toggle="modal" data-bs-target="#AddDept"><i
-                  class="bi bi-pencil"></i></button>
-              <button class="btnDelete btn btn-danger text-danger bg-transparent border-0 m-0 p-3" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="bi bi-trash3"></i></button>
-
-            </td>
-          </tr>
-         <!-- <tfoot  >
-          <tr class="col-6">
-            <td>
-              <nav aria-label="Page navigation example ">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </td>
-          </tr>
-         </tfoot>
-        </tbody> -->
-
-      </table>
-    </div>
-    <div class="modal fade" id="AddDept">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">اضافة قسم</h4>
-            <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal" aria-label="اضافة قسم"></button>
-
-          </div>
-          <div class="modal-body"
-          style="overflow-x: hidden;"
-          >
-
-            <form action="#" id="myForm"    >
-
-
-              <div class="inputField col-12 m-4 p-4" >
-                <div class="mb-4">
-                  <label for="name">أسم القسم</label>
-                  <input type="text" class="form-control col-6" name="" id="name" required>
+            <div class="col-4 d-flex justify-content-evenly" style="width: 180px;height:50px; margin-left:20%;">
+                <button type="button" class="btn btn-add" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <span class="text-white">
+                        اضافة قسم
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                             fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <div class="col-4" style="width: 180px; height: 65px;">
+                <div class="dropdown">
+                    <button class="btn btn-light justify-content-center align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100% !important ">
+                        @if (string.IsNullOrEmpty(ViewBag.Type as string))
+                        {
+                            <div style="text-align:center "> كل الاقسام &nbsp&nbsp<span class="ml-1">&#9662;</span></div>
+                        }
+                        else if (ViewBag.Type == "std")
+                        {
+                            <div class="d-flex align-items-center" style="width:100%;text-align:center">دراسي <span class="ml-1">&#9662;</span></div>
+                        }
+                        else if (ViewBag.Type == "mng")
+                        {
+                            <div class="d-flex align-items-center" style="width:100%">اداري <span class="ml-1">&#9662;</span></div>
+                        }
+                        else if (ViewBag.Type == "dean")
+                        {
+                            <div class="d-flex align-items-center" style="width:100%">العميد <span class="ml-1">&#9662;</span></div>
+                        }
+                        else if (ViewBag.Type == "acc")
+                        {
+                            <div class="d-flex align-items-center" style="width:100%">حسابات <span class="ml-1">&#9662;</span></div>
+                        }
+                        else if (ViewBag.Type == "reg")
+                        {
+                            <div class="d-flex align-items-center" style="width:100%">التسجيل <span class="ml-1">&#9662;</span></div>
+                        }
+                        else
+                        {
+                            <div class="d-flex align-items-center" style="width:100%"> الكل<span class="ml-1">&#9662;</span></div>
+                        }
+                    </button>
+                    <ul class="dropdown-menu" style="width: 180px;">
+                        <!-- Set a fixed width here -->
+                        <li>
+                            <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "Section", new { category = "الكل" })'">الكل</button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "Section", new { category = "std" })'">دراسي</button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "Section", new { category = "mng" })'">اداري</button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "Section", new { category = "dean" })'">العميد</button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "Section", new { category = "acc" })'">حسابات</button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" type="button" onclick="location.href='@Url.Action("Category", "Section", new { category = "reg" })'">التسجيل</button>
+                        </li>
+                    </ul>
                 </div>
-                <div class="mb-4">
-                  <label for="age">ملاحضات القسم
-                  </label>
-                  <input type="text" class="form-control" name="" id="city" required>
-
-                </div>
-                <div class="mb-4">
-                  <label for="city">المبلغ الاجمالي</label>
-                  <input type="number" class="form-control" name="" id="age" required>
-                </div>
-                <div class="mb-4">
-                  <label for="email">السنة الاكادمية</label>
-                  <select class="form-select" style="padding:20px 30px" aria-label="Default select example">
-                    <option selected disabled>السنة الدراسية</option>
-
-                  </select>
-                </div>
-                <div class="mb-4">
-                  <label for="phone">الرقم</label>
-                  <input type="text" class="form-control" name="" id="phone" minlength="11" maxlength="11" required>
-                </div>
-                <div class="mb-4">
-                  <label for="post">كود القسم</label>
-                  <input type="text" class="form-control" name="" id="post" required>
-                </div>
-
-              </div>
-
-            </form>
-          </div>
-          <div class="modal-footer" style="justify-content: space-between;">
-            <button type="submit" form="myForm" class="btn btn-primary submit m-0 p-0 dep rounded-pill"  style="width: 100px; height: 50px;" >
-              اضافة <i class="bi bi-check"></i>
-            </button>
-       <button type="button" class="btn btn-danger bg-danger p-0 rounded-pill" style="width: 100px; height: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  <i class="bi bi-x"></i> الغاء
-</button>
-          </div>
+            </div>
 
         </div>
-      </div>
     </div>
 
-  </div>
+    <div class="container-fluid col-12 bg-white-subtle shadow p-3 mb-5 bg-body-white rounded" style="width: 97%;">
+        <div class="table-responsive">
+            <table class="table border-top mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col-1">#</th>
+                        <th scope="col-2">الاسم بالإنجليزية</th>
+                        <th scope="col-2">الاسم بالعربية</th>
+                        <th scope="col-2">انوع القسم</th>
+                        <th scope="col-1">كود القسم</th>
+                        <th scope="col-1">رقم القسم</th>
+                        <th scope="col-1">سنوات الدراسة</th>
+                        <th scope="col-1">عدد تسجيلات الفتره الصباحية</th>
+                        <th scope="col-1">عدد تسجيلات الفتره المسائية</th>
+                        <th scope="col">كتاب</th>
+                        <th scope="col">صورة القسم</th>
+                        <th scope="col">العمليات</th>
 
-  </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.NameEn</td>
+                            <td>@item.Name</td>
+                            <td>
+                                    @if (item.Type == "std")
+                                    {
+                                    <span>دراسي</span>
+                                    }
+                                    else if (item.Type == "mng")
+                                    {
+                                    <span>اداري</span>
+                                    }
+                                    else if (item.Type == "dean")
+                                    {
+                                    <span>العميد</span>
+                                    }
+                                    else if (item.Type == "acc")
+                                    {
+                                    <span>حسابات</span>
+                                    }
+                                    else if (item.Type == "reg")
+                                    {
+                                    <span>التسجيل</span>
+                                    }
 
-  </div>
+                            </td>
+                            <td>@item.Short</td>
+                            <td>@item.Number</td>
+                            <td>@item.Level </td>
+                            <td>@item.RegCounterMoring</td>
+                            <td>@item.RegCounterEving</td>
+                            <td>@item.ConfessionBook</td>
+                            <td><img src="@item.Image" style="width: 30px; height: 30px;" alt="@item.Image"></td>
+                            <td></td>
+                            <td>
+                                <div class="d-flex justify-content-between">
+                                    <a href="#" class="fa-solid fa-pen-to-square" style="margin-left: 25px; color: #3F51B5;"></a>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title">تأكيد</h5>
-              <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <p> <i class="bi bi-exclamation-circle p-3"></i>هل انت متأكد من حذف القسم؟</p>
-          </div>
-          <div class="modal-footer d-flex justify-content-between">
-              <button type="button" class="btn btn-danger bg-danger rounded-pill" data-bs-dismiss="modal">نعم</button>
-              <button type="button" class="btn btn-primary dep rounded-pill">لا</button>
-          </div>
-      </div>
-  </div>
-  </div>
+                                    <a href="#" class="fa-solid fa-trash text-danger"></a>
+                                </div>
+
+                            </td>
+                        </tr>
+                        }
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="Page navigation example" style="display: flex; align-items: center; justify-content: center;">
+            <ul class="pagination" style="direction: ltr;">
+                @if (Model.Any())
+                {
+                    <li class="page-item @(string.IsNullOrEmpty(ViewBag.Type) || ViewBag.Type == "الكل" ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = 1, category = ViewBag.Type })" aria-label="First">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    @for (int i = 1; i <= Math.Ceiling((double)ViewBag.TotalPages); i++)
+                    {
+                        <li class="page-item @(ViewBag.Type == null || ViewBag.Type == "الكل" ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i, category = ViewBag.Type })">@i</a>
+                        </li>
+                    }
+                    <li class="page-item @(ViewBag.Type == null || ViewBag.Type == "الكل" ? "active" : "")">
+                        <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.TotalPages, category = ViewBag.Type })" aria-label="Last">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+
+
+        </nav>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">اضافة قسم</h1>
+                    <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="modal"
+                            aria-label="اضافة قسم"></button>
+                </div>
+                @using (Html.BeginForm("Create", "Section", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">الاسم بالإنجليزية</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="enName" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">الاسم بالعربية</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="name">
+                        </div>
+                        <div class="mb-3">
+                            @*                             <label for="exampleInputText1" class="form-label">نوع القسم</label>
+                        <input type="text" class="form-control" id="exampleInputText1" name="Type"> *@
+                            <div class="dropdown">
+                                <div>
+                                    @Html.DropDownList("Type", new SelectList(new[]
+                                             {
+                                new SelectListItem { Text = "دراسي", Value = "std"  },
+                                new SelectListItem { Text = "اداري", Value = "mng" },
+                                new SelectListItem { Text = "الطاقم التدريسي", Value = "dean" },
+                                new SelectListItem { Text = "حسابات", Value = "acc" },
+                                new SelectListItem { Text = "التسجيل", Value = "reg" }
+                                }, "Value", "Text"), "-- اختر النوع --", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">رقم القسم</label>
+                            <input type="text" class="form-control" id="exampleInputText1" name="Number">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">كود القسم</label>
+                            <input type="text" class="form-control" id="exampleInputText1" name="Short">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">سنوات الدراسة</label>
+                            <input type="text" class="form-control" id="exampleInputText1" name="Level">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">عدد تسجيلات الفتره الصباحية</label>
+                            <input type="text" class="form-control" id="exampleInputText1" name="RegCounterMoring">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputText1" class="form-label">عدد تسجيلات الفتره المسائية</label>
+                            <input type="text" class="form-control" id="exampleInputText1" name="RegCounterEving">
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12  mt-2">
+
+                            <label for="file-upload" class="custom-file-upload  " style="background-color:forestgreen !important">
+                                اختر كتاب <i class="fa-solid fa-download text-white"></i>
+                            </label>
+                            <input id="file-upload" type="file" name="ConfessionBook" />
+
+
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-12  mt-2">
+
+                            <label for="file-upload" class="custom-file-upload">
+                                اختر الصورة <i class="fa-solid fa-download text-white"></i>
+                            </label>
+                            <input id="file-upload" type="file" name="image" />
+
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer" style="justify-content: space-between;">
+                        <button type="submit" class="btn btn-primary submit m-0 p-0 dep rounded-pill" style="width: 100px; height: 50px;">
+                            <label class="mb-0 mx-auto ms-2">اضافة</label>
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+                        <button type="button" class="btn btn-danger bg-danger p-0 rounded-pill" style="width: 100px; height: 50px;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <label class="mb-0 mx-auto ms-2">الغاء</label>
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/filesize-validator.js" asp-append-version="true"></script>
+    <script src="~/js/game-form.js" asp-append-version="true"></script>
+}
